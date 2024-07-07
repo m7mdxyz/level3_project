@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\EnsureTokenIsValid;
 use App\Http\Controllers\BlogController;
 
-
 Route::middleware(['auth'])->group(function () {
 
     Route::get('/', function () {
@@ -22,9 +21,15 @@ Route::middleware(['auth'])->group(function () {
     Route::patch('/blogs/{id}', [BlogController::class,'update']);
     Route::delete('/blogs/{id}', [BlogController::class,'destroy']);
 
+
+    Route::get('/myprofile', function () {
+        return view('/dashboard/Auth/myprofile');
+    });
+
+    Route::get('/myprofile', [BlogController::class,'showProfile'])->name('profile');
+
+
 });
-
-
 
 
 

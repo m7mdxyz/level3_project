@@ -72,4 +72,12 @@ class BlogController extends Controller
         // return redirect('/');
     }
 
+    public function showProfile()
+    {
+        $user = auth()->user(); // Assuming the authenticated user
+        $blogsCount = Blog::where('user_id', $user->id)->count();
+
+        return view('/dashboard/Auth/myprofile', compact('user', 'blogsCount'));
+    }
+
 }
