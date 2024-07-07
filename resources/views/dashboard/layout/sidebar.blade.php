@@ -24,9 +24,6 @@
                                 <li>
                                     <a href="/blogs/create">Create a Blog</a>
                                 </li>
-                                <li>
-                                    <a href="/blogs/edit">Edit a Blog</a>
-                                </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
