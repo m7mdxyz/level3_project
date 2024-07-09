@@ -13,15 +13,31 @@
 </div>
 <!-- /.row -->
 
-<div class="card" style="width: 18rem;">
-    <img class="card-img-top" src="{{ asset($user->profile_pic) }}" alt="Profile Picture">
-    <div class="card-body">
-        <h5 class="card-title">{{ $user->name }}</h5>
-        <p>{{ $user->email }}</p>
-        <p>Blogs Count: {{ $blogsCount }}</p>
-        <p>User Type: {{ $user->user_type_id == 1 ? 'Admin' : 'Writer' }}</p>
-        <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-primary">Back to Dashboard</a>
-    </div>
+<div class="row">
+        <div class="col-lg-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    User Profile
+                </div>
+                <div class="panel-body">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="{{ asset($user->profile_pic) }}" alt="Profile Picture" style="width: 100px; height: 100px;">
+                        <div class="card-body">
+                            <h5 class="card-title">Name: {{ $user->name }}</h5>
+                            <p>Email: {{ $user->email }}</p>
+                            <p>Blogs Count: {{ $blogsCount }}</p>
+                            <p>User Type: {{ $user->user_type_id == 1 ? 'Admin' : 'Writer' }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    Panel Footer
+                </div>
+            </div>
+            <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-primary">Back to Dashboard</a>
+        </div>
+        <!-- /.col-lg-4 -->
+
 </div>
 
 
