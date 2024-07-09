@@ -12,4 +12,7 @@ class Blog extends Model
     protected $fillable = ['title','content','user_id','image'];
 
     protected $casts = [];
+
+    // Test: Define the relationship with the User model
+    
 }

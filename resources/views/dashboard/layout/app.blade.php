@@ -19,6 +19,11 @@
     <!-- SB Admin CSS - Include with every page -->
     <link href={{asset("backend/css/sb-admin.css")}} rel="stylesheet">
 
+        <!-- Bootstrap JS Bundle with Popper -->
+        <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-cWl+KLF2lF0hRauIEZaMbhlZcz98oNmFQk+kBm0q6Y2fD8j5z1uyIhC5L0fahhXr" crossorigin="anonymous"></script> -->
+    <!-- Bootstrap CSS -->
+    <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> -->
+
 </head>
 
 <body>
@@ -44,7 +49,9 @@
             <!-- /.navbar-static-side -->
         </nav>
 
-        @yield('content')
+        <div id="page-wrapper">
+            @yield('content')
+        </div>
         <!-- /#page-wrapper -->
 
     </div>

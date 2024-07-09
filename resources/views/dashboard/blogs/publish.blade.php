@@ -69,7 +69,7 @@
                                             <th>is published?</th>
                                             <th>published at</th>
                                             <th>created at</th>
-                                            <th>edit</th>
+                                            <th>publish</th>
                                             <th>delete</th>
                                         </tr>
                                     </thead>
@@ -88,28 +88,20 @@
                     </td>
                     <td>{{ $blog->published_at}}</td>
                     <td>{{ $blog->created_at}}</td>
-                    {{-- testing --}}
-                    {{-- only show delete and edit if the blog belons to user --}}
-                    @if(auth()->check() && auth()->user()->id == $blog->user_id)
-                        <td>
-                            <a href="/blogs/{{$blog->id}}/edit" class="btn btn-sm btn-primary">Edit</a>
-                        </td>
-                        <td>
-                            <form method="POST" action="/blogs/{{$blog->id}}">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this blog?')">Delete</button>
-                            </form>
-                        </td>
-                    @else
-                        <td>
-                            <a href="/blogs/{{$blog->id}}/edit" class="btn btn-sm btn-primary disabled" aria-disabled="true">Edit</a>
-                        </td>
-                        <td>
-                            <button class="btn btn-sm btn-danger disabled" aria-disabled="true" disabled>Delete</button>
-                        </td>
-                    @endif
-
+                    <td>
+                        @if ($blog->is_published != 0)
+                            <a href="/blogs/publish_status/{{$blog->id}}/0" class="btn btn-sm btn-danger">Unpublish</a>
+                        @else
+                            <a href="/blogs/publish_status/{{$blog->id}}/1" class="btn btn-sm btn-primary">Publish</a>
+                        @endif
+                    </td>
+                    <td>
+                        <form method="POST" action="/blogs/{{$blog->id}}">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this blog?')">Delete</button>
+                        </form>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

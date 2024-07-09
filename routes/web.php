@@ -3,6 +3,7 @@
 use App\Http\Controllers\loginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\EnsureTokenIsValid;
+use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\BlogController;
 
 Route::middleware(['auth'])->group(function () {
@@ -16,10 +17,18 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/blogs/create', [BlogController::class,'store']);   
     Route::get('/blogs/create', [BlogController::class,'create']);
     
+    // publish page only for admins.
+    Route::get('/blogs/publish', [BlogController::class,'viewPublish']);
+    Route::get('/blogs/publish_status/{blog_id}/{status}', [BlogController::class,'publishing']);
+
+    // Route::get("/blogs/publish/publishing", [BlogController::class,'publishing']);
+    
     Route::get('/blogs/{id}', [BlogController::class,'Show']);
     Route::get('/blogs/{id}/edit', [BlogController::class,'edit']);
     Route::patch('/blogs/{id}', [BlogController::class,'update']);
     Route::delete('/blogs/{id}', [BlogController::class,'destroy']);
+
+
 
 
     Route::get('/myprofile', function () {

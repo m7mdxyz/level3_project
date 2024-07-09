@@ -63,7 +63,7 @@
                                     <form role="form" method="POST" action="/blogs/create" enctype="multipart/form-data">
                                     @csrf
                                         
-                                    <input type="text" name="user_id" value="1" readonly>
+                                    <!-- <input type="text" name="user_id" value="1" readonly> -->
 
                                         <div class="form-group">
                                             <label>Blog Title</label>
