@@ -35,7 +35,17 @@ Route::middleware(['auth'])->group(function () {
         return view('/dashboard/Auth/myprofile');
     });
 
+    Route::get('/myprofile/edit', function () {
+        return view('/dashboard/Auth/edit');
+    });
+    
+
     Route::get('/myprofile', [BlogController::class,'showProfile'])->name('profile');
+
+    Route::get('/myprofile/edit', [BlogController::class,'showEditProfile'])->name('profile');
+    Route::post('/myprofile/edit', [BlogController::class,'saveProfileChanges'])->name('profile');
+
+
 
 
 });

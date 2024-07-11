@@ -14,10 +14,10 @@
 <!-- /.row -->
 
 <div class="row">
-        <div class="col-lg-2">
+        <div class="col-lg-5">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    User Profile
+                    User Profile #{{$user->id}}
                 </div>
                 <div class="panel-body">
                     <div class="card" style="width: 18rem;">
@@ -25,15 +25,17 @@
                         <div class="card-body">
                             <h5 class="card-title">Name: {{ $user->name }}</h5>
                             <p>Email: {{ $user->email }}</p>
-                            <p>Blogs Count: {{ $blogsCount }}</p>
+                            <!-- <p>Blogs Count: {{ $blogsCount }}</p> -->
                             <p>User Type: {{ $user->user_type_id == 1 ? 'Admin' : 'Writer' }}</p>
                         </div>
                     </div>
                 </div>
                 <div class="panel-footer">
-                    Panel Footer
+                    <!-- Panel Footer -->
+                    Blogs Count: {{ $blogsCount }}
                 </div>
             </div>
+            <a href="/myprofile/edit" class="btn btn-primary">Edit</a>
             <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-primary">Back to Dashboard</a>
         </div>
         <!-- /.col-lg-4 -->

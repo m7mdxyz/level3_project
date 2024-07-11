@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\Models\Blog;
+use Auth;
 
 class BlogController extends Controller
 {
@@ -88,6 +89,34 @@ class BlogController extends Controller
         $blogsCount = Blog::where('user_id', $user->id)->count();
 
         return view('/dashboard/Auth/myprofile', compact('user', 'blogsCount'));
+    }
+
+    public function showEditProfile()
+    {
+        $user = auth()->user(); // Assuming the authenticated user
+        $blogsCount = Blog::where('user_id', $user->id)->count();
+
+        return view('/dashboard/Auth/edit', compact('user', 'blogsCount'));
+    }
+
+    public function saveProfileChanges(Request $request)
+    {
+        $credentials = $request->validate([
+            'name'=> 'required|min:6|max:255',
+            'email'=>'required|email:rfc,dns|string|max:255'
+        ]);
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+ 
+            // return Auth::user();
+            return redirect('/');
+        }
+
+        // return 0;
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ])->onlyInput('email');
     }
 
     public function viewPublish()
